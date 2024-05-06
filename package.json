@@ -1,0 +1,32 @@
+{
+  "version": "0.0.8",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "build": "tsc",
+    "start": "node index.js",
+    "test": "jest",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write .",
+    "prepare": "husky install",
+    "precommit": "lint-staged",
+    "postinstall": "husky install",
+    "test-sample": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/axios": "^3.0.1",
+    "@nestjs/bull": "^10.1.1",
+    "@thalalabs/router-sdk": "^1.2.0",
+    "morgan": "^1.10.0",
+    "@nestjs/schematics": "^10.0.0",
+    "source-map-support": "^0.5.21",
+    "eslint-config-prettier": "^9.0.0",
+    "@nestjs/cli": "^10.0.0",
+    "@types/supertest": "^2.0.12",
+    "@aptos-labs/ts-sdk": "^1.9.1"
+  }
+}
