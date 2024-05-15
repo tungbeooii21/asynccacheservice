@@ -1,22 +1,18 @@
-function canFinish(numCourses, prerequisites) {
-  const graph = new Array(numCourses).fill(0).map(() => []);
-  const inDegree = new Array(numCourses).fill(0);
-  for (const [course, pre] of prerequisites) {
-    graph[pre].push(course);
-    inDegree[course]++;
+function longestPalindromeSubseq(s) {
+  const n = s.length;
+  const dp = Array.from(Array(n), () => Array(n).fill(0));
+  for (let i = 0; i < n; i++) {
+    dp[i][i] = 1;
   }
-  const queue = [];
-  for (let i = 0; i < numCourses; i++) {
-    if (inDegree[i] === 0) queue.push(i);
-  }
-  let count = 0;
-  while (queue.length) {
-    const course = queue.shift();
-    count++;
-    for (const nextCourse of graph[course]) {
-      inDegree[nextCourse]--;
-      if (inDegree[nextCourse] === 0) queue.push(nextCourse);
+  for (let len = 2; len <= n; len++) {
+    for (let i = 0; i < n - len + 1; i++) {
+      const j = i + len - 1;
+      if (s[i] === s[j]) {
+        dp[i][j] = 2 + dp[i + 1][j - 1];
+      } else {
+        dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+      }
     }
   }
-  return count === numCourses;
+  return dp[0][n - 1];
 }
